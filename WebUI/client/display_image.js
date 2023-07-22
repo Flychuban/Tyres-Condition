@@ -10,8 +10,8 @@ form.addEventListener('submit', async (event) => {
 
   let response = await fetch("http://95.42.52.106:5677/submit", { method: "POST", body: formData });
   let data = await response.json();
+  alert(data.text);
   
-  // Reset the form after submission
   form.reset();
 
 });
@@ -61,22 +61,4 @@ form1.addEventListener('reset', () => {
 });
 
 
-let flag = true;
-
-setInterval(async () => {
-  let checkedText = await fetch("http://95.42.52.106:5677/check_text", { method: "GET" });
-  let checkedTextData = await checkedText.json();
-  if (checkedTextData.status !== "False") {
-    if(flag === true){
-      alert(checkedTextData.text);
-      
-      //set text to ''
-
-      flag = false;
-    } 
-  }else{
-    flag = true;
-  }
-
-}, 1000);
 

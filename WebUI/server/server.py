@@ -3,6 +3,7 @@ from werkzeug.utils import secure_filename
 from flask_cors import CORS
 import os
 import glob
+from model_setup import model_predict
 
 app = Flask(__name__)
 CORS(app)  # Add this line to enable CORS for all routes
@@ -29,38 +30,27 @@ def submit_form():
 
     # Get the count of existing files in the "saved" directory
     existing_files = glob.glob(os.path.join(SAVED_DIR, '*.png'))
-    file_count = len(existing_files)
+
+    filename = f'png_{1}.png'
+    saved_path = os.path.join(SAVED_DIR, filename)
 
     for file in files:
-        file_count += 1
-        filename = f'png_{file_count}.png'
-        saved_path = os.path.join(SAVED_DIR, filename)
+        filename = f'png_{1}.png'
 
         # Save the file to the "saved" directory
         file.save(saved_path)
         saved_files.append(saved_path)
 
-    return jsonify({'message': 'Files saved successfully.', 'saved_files': saved_files})
 
-@app.route('/get', methods=['GET'])
-def get():
-    newest_file = check_newest_file()
-    if newest_file:
-        file_path = os.path.join(SAVED_DIR, newest_file)
-        return send_file(file_path, as_attachment=True)
+    result = model_predict(saved_path)
+    print(result)
+    if result == "False":
+        text = 'Гумата е в добро състояне'
     else:
-        return 'No files found'
+        text = 'Гумата е в лошо състояне'
     
-@app.route('/send_prediction', methods=['POST'])
-def send_string():
-    text = request.json.get('text')  # Get the string value from the request JSON data
-    return jsonify({'message': 'String received successfully.', 'text': text})
 
-@app.route('/check_text', methods=['GET'])
-def set_pending():
-    if text != '':
-        return jsonify({'text': text})    
-    return jsonify({'status': "False"})
+    return jsonify({'text': text})
 
 
 if __name__ == '__main__':
