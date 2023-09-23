@@ -1,4 +1,5 @@
 # Tyres Side Condition Checker
+![tyre](https://github.com/Flychuban/Tyres-Condition/blob/main/images/tyre.jpg)
 
 Welcome to the Tire Damage Detection Program! This software utilizes TensorFlow, a powerful machine learning framework, to check for damage on the side of a tire.
 It is designed to automate the process of tire inspection, making it quicker and more accurate. 
@@ -8,12 +9,13 @@ The program is integrated with a web interface, making it user-friendly and acce
 Tire Damage Detection: Utilizes machine learning models created with TensorFlow to detect and classify damage on the side of a tire, such as cuts, punctures, and bulges.
 
 Web Interface: Provides a user-friendly web-based interface that allows users to upload images of tires and receive instant damage assessments.
+![damagedtyre](https://github.com/Flychuban/Tyres-Condition/blob/main/images/tyre.jpg)
 
 ## Accuracy: 
 
 The program is not 100% accurate
 
-Check it out: [The WebUI](http://95.42.52.106:2006/DemoGumi/client/index.html)
+[Check it out!](http://95.42.52.106:2006/DemoGumi/client/index.html)
 
 ## Accessibility: 
 Accessible from any device with a web browser, making it easy to use on the shop floor or in the field.
@@ -47,7 +49,6 @@ cd WebUI/server
 ```
 ```
 python server.py
-
 ```
 Access the web interface by double clicking on the index.html in WebUI/client
 
