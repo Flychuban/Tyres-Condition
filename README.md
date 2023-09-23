@@ -9,7 +9,7 @@ The program is integrated with a web interface, making it user-friendly and acce
 Tire Damage Detection: Utilizes machine learning models created with TensorFlow to detect and classify damage on the side of a tire, such as cuts, punctures, and bulges.
 
 Web Interface: Provides a user-friendly web-based interface that allows users to upload images of tires and receive instant damage assessments.</br>
-![damagedtyre]((https://github.com/Flychuban/Tyres-Condition/blob/main/images/damaged%20tyre.jpg)
+![damagedtyre]((https://github.com/Flychuban/Tyres-Condition/blob/main/images/damagedtyre.jpg)
 
 ## Accuracy: 
 
